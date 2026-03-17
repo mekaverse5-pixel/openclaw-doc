@@ -17,16 +17,24 @@ export const commands: Command[] = [
   // 入门命令
   {
     name: 'setup',
-    description: 'Initialize config and workspace',
-    descriptionZh: '初始化配置和工作区，设置 OpenClaw 的基本配置',
+    description: 'Initialize ~/.openclaw/openclaw.json and the agent workspace',
+    descriptionZh: '初始化配置文件 ~/.openclaw/openclaw.json 和 Agent 工作区，设置 OpenClaw 的基本配置（首次运行推荐使用 onboard 命令进行完整配置）',
     category: '入门',
     options: [
-      { name: '--workspace', description: 'Agent workspace path', descriptionZh: 'Agent 工作区路径', required: false },
-      { name: '--wizard', description: 'Run onboarding wizard', descriptionZh: '运行入门向导', required: false },
-      { name: '--non-interactive', description: 'Run without prompts', descriptionZh: '无交互模式运行', required: false },
-      { name: '--mode', description: 'local or remote mode', descriptionZh: '本地或远程模式', required: false },
+      { name: '--workspace <dir>', description: 'Agent workspace path (default: ~/.openclaw/workspace)', descriptionZh: 'Agent 工作区路径（默认：~/.openclaw/workspace）', required: false },
+      { name: '--wizard', description: 'Run onboarding wizard', descriptionZh: '运行交互式入门向导', required: false },
+      { name: '--non-interactive', description: 'Run without prompts', descriptionZh: '无交互模式运行（跳过所有提示）', required: false },
+      { name: '--mode <local|remote>', description: 'Onboard mode: local or remote', descriptionZh: '入门模式：local（本地）或 remote（远程）', required: false },
+      { name: '--remote-url <url>', description: 'Remote Gateway URL', descriptionZh: '远程网关 URL 地址', required: false },
+      { name: '--remote-token <token>', description: 'Remote Gateway token', descriptionZh: '远程网关认证令牌', required: false },
     ],
-    examples: ['openclaw setup', 'openclaw setup --wizard', 'openclaw setup --non-interactive --mode local'],
+    examples: [
+      'openclaw setup',
+      'openclaw setup --workspace ~/.openclaw/workspace',
+      'openclaw setup --wizard',
+      'openclaw setup --non-interactive --mode local',
+      'openclaw setup --mode remote --remote-url ws://example.com:18789 --remote-token xxx',
+    ],
   },
   {
     name: 'onboard',
