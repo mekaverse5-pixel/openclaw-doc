@@ -7,8 +7,10 @@
     "npm": ">=9.0.0"
   },
   "scripts": {
+    "dev": "mintlify dev",
     "start": "mintlify dev",
-    "build": "mintlify build"
+    "build": "mintlify build --yes",
+    "validate": "mintlify validate"
   },
   "dependencies": {
     "mintlify": "^4.0.0"
