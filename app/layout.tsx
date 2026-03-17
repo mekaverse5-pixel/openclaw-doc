@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { ScrollRestorer } from '@/components/ScrollRestorer'
 
 export const metadata: Metadata = {
   title: 'OpenClaw 命令速查',
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="min-h-screen bg-[#0a0a0a] text-white">
+        <ScrollRestorer />
         <Navbar />
         <main className="pt-16">
           {children}
