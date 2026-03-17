@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npx mintlify build",
+  "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "framework": "mintlify",
-  "outputDirectory": "mintlify-output"
+  "outputDirectory": "build",
+  "framework": "docusaurus-2"
 }
