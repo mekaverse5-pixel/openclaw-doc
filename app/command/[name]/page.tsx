@@ -35,7 +35,7 @@ export default function CommandPage({ params }: Props) {
         <div className="flex items-center gap-3 mb-4">
           <code className="text-3xl font-mono text-lobster-accent">{command.name}</code>
           {command.subcommands && (
-            <span className="px-2 py-1 bg-gray-800 rounded text-xs text-gray-400">分组</span>
+            <span className="px-2 py-1 bg-gray-800 rounded text-xs text-gray-400">分组命令</span>
           )}
         </div>
         <p className="text-xl text-gray-300">{command.descriptionZh}</p>
@@ -80,7 +80,10 @@ export default function CommandPage({ params }: Props) {
                         {opt.required && <span className="text-red-400"> *</span>}
                       </code>
                     </td>
-                    <td className="py-3 px-4 text-gray-300">{opt.description}</td>
+                    <td className="py-3 px-4 text-gray-300">
+                      <div>{opt.descriptionZh}</div>
+                      <div className="text-gray-500 text-sm">{opt.description}</div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
