@@ -925,6 +925,194 @@ docker run -d \\
       },
     ],
   },
+  {
+    slug: 'acp-setup',
+    title: 'ACP (Agent Client Protocol) 配置',
+    titleEn: 'ACP Setup',
+    description: '配置 ACP 桥接实现 IDE 集成',
+    category: '集成',
+    difficulty: 'medium',
+    steps: [
+      {
+        title: '什么是 ACP',
+        content: `# 什么是 ACP
+
+ACP (Agent Client Protocol) 是一个标准化的协议，允许 IDE 和其他客户端通过 stdio 与 AI Agent 通信。
+
+OpenClaw 的 ACP 桥接功能：
+- 通过 stdio 与 IDE 通信
+- 将请求转发到 OpenClaw Gateway
+- 保持 ACP 会话与 Gateway 会话密钥的映射`,
+      },
+      {
+        title: '基本用法',
+        content: `# 基本用法
+
+启动 ACP 桥接：
+
+\`\`\`bash
+openclaw acp
+\`\`\`
+
+连接到远程 Gateway：
+
+\`\`\`bash
+openclaw acp --url wss://gateway-host:18789 --token <token>
+\`\`\`
+
+使用 token 文件（更安全）：
+
+\`\`\`bash
+openclaw acp --url wss://gateway-host:18789 --token-file ~/.openclaw/gateway.token
+\`\`\``,
+      },
+      {
+        title: '会话管理',
+        content: `# 会话管理
+
+ACP 会话默认映射到 Gateway 会话密钥。
+
+指定会话密钥：
+
+\`\`\`bash
+openclaw acp --session agent:main:main
+\`\`\`
+
+按标签附加到现有会话：
+
+\`\`\`bash
+openclaw acp --session-label "support inbox"
+\`\`\`
+
+重置会话（在第一个 prompt 之前）：
+
+\`\`\`bash
+openclaw acp --session agent:main:main --reset-session
+\`\`\`
+
+需要会话已存在：
+
+\`\`\`bash
+openclaw acp --session agent:main:main --require-existing
+\`\`\``,
+      },
+      {
+        title: 'Zed 编辑器集成',
+        content: `# Zed 编辑器集成
+
+在 \`~/.config/zed/settings.json\` 中添加自定义 ACP 代理：
+
+\`\`\`json
+{
+  "agent_servers": {
+    "OpenClaw ACP": {
+      "type": "custom",
+      "command": "openclaw",
+      "args": ["acp"],
+      "env": {}
+    }
+  }
+}
+\`\`\`
+
+指定 Gateway 和代理：
+
+\`\`\`json
+{
+  "agent_servers": {
+    "OpenClaw ACP": {
+      "type": "custom",
+      "command": "openclaw",
+      "args": [
+        "acp",
+        "--url",
+        "wss://gateway-host:18789",
+        "--token",
+        "<token>",
+        "--session",
+        "agent:design:main"
+      ],
+      "env": {}
+    }
+  }
+}
+\`\`\``,
+      },
+      {
+        title: 'acpx (Codex/Claude) 集成',
+        content: `# acpx (Codex/Claude) 集成
+
+使用 acpx 让编码代理通过 ACP 与 OpenClaw 通信。
+
+一次性请求：
+
+\`\`\`bash
+acpx openclaw exec "Summarize the active OpenClaw session state."
+\`\`\`
+
+持久化命名会话：
+
+\`\`\`bash
+acpx openclaw sessions ensure --name codex-bridge
+acpx openclaw -s codex-bridge --cwd /path/to/repo \\
+  "Ask my OpenClaw work agent for recent context relevant to this repo."
+\`\`\`
+
+在 \`~/.acpx/config.json\` 中配置默认目标：
+
+\`\`\`json
+{
+  "agents": {
+    "openclaw": {
+      "command": "env OPENCLAW_HIDE_BANNER=1 OPENCLAW_SUPPRESS_NOTES=1 openclaw acp --url ws://127.0.0.1:18789 --token-file ~/.openclaw/gateway.token --session agent:main:main"
+    }
+  }
+}
+\`\`\``,
+      },
+      {
+        title: '调试模式',
+        content: `# 调试模式
+
+使用内置 ACP 客户端进行调试：
+
+\`\`\`bash
+openclaw acp client
+\`\`\`
+
+指定远程 Gateway：
+
+\`\`\`bash
+openclaw acp client --server-args --url wss://gateway-host:18789 --token-file ~/.openclaw/gateway.token
+\`\`\`
+
+指定工作目录：
+
+\`\`\`bash
+openclaw acp client --cwd /path/to/project
+\`\`\``,
+      },
+      {
+        title: '选项参考',
+        content: `# 选项参考
+
+主要选项：
+- \`--url <url>\`: Gateway WebSocket URL
+- \`--token <token>\`: Gateway 认证令牌
+- \`--token-file <path>\`: 从文件读取令牌
+- \`--session <key>\`: 默认会话密钥
+- \`--session-label <label>\`: 默认会话标签
+- \`--reset-session\`: 重置会话
+- \`--require-existing\`: 失败如果会话不存在
+- \`--no-prefix-cwd\`: 不在工作目录前添加前缀
+- \`--verbose, -v\`: 详细日志
+
+安全建议：
+- 优先使用 \`--token-file\` 而非 \`--token\`
+- 可使用环境变量 \`OPENCLAW_GATEWAY_TOKEN\``,
+      },
+    ],
+  },
 ]
 
 export function getTutorial(slug: string) {
