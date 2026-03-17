@@ -8,37 +8,23 @@
   "navigation": [
     {
       "group": "快速开始",
-      "pages": ["index", "getting-started"]
+      "pages": ["index", "install", "getting-started"]
     },
     {
-      "group": "配置指南",
-      "pages": ["configuration"]
+      "group": "通道配置",
+      "pages": ["channels"]
+    },
+    {
+      "group": "模型配置",
+      "pages": ["providers"]
     },
     {
       "group": "工具使用",
-      "pages": ["tools"]
+      "pages": ["tools", "tools-usage"]
     },
     {
       "group": "API 参考",
       "pages": ["api"]
-    }
-  ],
-  "tabs": [
-    {
-      "name": "快速开始",
-      "url": "getting-started"
-    },
-    {
-      "name": "配置指南",
-      "url": "configuration"
-    },
-    {
-      "name": "工具使用",
-      "url": "tools"
-    },
-    {
-      "name": "API 参考",
-      "url": "api"
     }
   ],
   "anchors": [
