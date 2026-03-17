@@ -9,17 +9,35 @@ interface Props {
 }
 
 export function generateStaticParams() {
-  return commands.map((cmd) => ({
-    name: cmd.name,
-  }))
+  const params: { name: string }[] = []
+  
+  for (const cmd of commands) {
+    params.push({ name: cmd.name })
+    
+    if (cmd.subcommands) {
+      for (const sub of cmd.subcommands) {
+        params.push({ name: `${cmd.name}-${sub.name}` })
+      }
+    }
+  }
+  
+  return params
 }
 
 export default function CommandPage({ params }: Props) {
-  const command = commands.find(c => c.name === params.name)
+  const [mainName, subName] = params.name.includes('-') 
+    ? params.name.split('-')
+    : [params.name, null]
+  
+  const command = commands.find(c => c.name === mainName)
   
   if (!command) {
     notFound()
   }
+
+  const subcommand = subName 
+    ? command.subcommands?.find(s => s.name === subName)
+    : null
 
   return (
     <div className="max-w-4xl mx-auto p-8">
