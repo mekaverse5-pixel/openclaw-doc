@@ -28,7 +28,6 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/mekaverse5-pixel/openclaw-doc/tree/main/',
         },
-        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -37,7 +36,6 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/openclaw-social-card.jpg',
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,
@@ -61,11 +59,6 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
-        {
-          href: 'https://discord.com/invite/clawd',
-          label: '社区',
-          position: 'right',
-        },
       ],
     },
     footer: {
@@ -77,10 +70,6 @@ const config: Config = {
             {
               label: '快速开始',
               to: '/docs/intro',
-            },
-            {
-              label: '安装指南',
-              to: '/docs/install',
             },
           ],
         },
