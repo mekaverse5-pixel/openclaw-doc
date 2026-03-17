@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+slug: /
 ---
 
 # OpenClaw 中文文档
@@ -17,10 +18,12 @@ OpenClaw 是一个强大的开源 AI 助手框架，支持多种消息通道和 
 
 ## 快速导航
 
-- [安装指南](/docs/install) - 安装和配置 OpenClaw
-- [通道配置](/docs/channels) - 连接消息通道
-- [模型配置](/docs/providers) - 配置 AI 模型
-- [工具使用](/docs/tools) - 使用内置工具
+| 分类 | 内容 |
+|------|------|
+| 🚀 快速开始 | 安装、运行你的第一个 AI 助手 |
+| 💬 消息通道 | 连接 Telegram、Discord 等 |
+| 🤖 AI 模型 | 配置 Claude、GPT 等 |
+| ⚙️ 配置指南 | Gateway、工具、安全设置 |
 
 ## 在线演示
 

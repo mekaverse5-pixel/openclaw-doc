@@ -50,13 +50,18 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docsSidebar',
           position: 'left',
           label: '文档',
         },
         {
           href: 'https://github.com/openclaw/openclaw',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://discord.com/invite/clawd',
+          label: '社区',
           position: 'right',
         },
       ],
@@ -69,7 +74,7 @@ const config: Config = {
           items: [
             {
               label: '快速开始',
-              to: '/docs/intro',
+              to: '/docs/start/getting-started',
             },
           ],
         },
