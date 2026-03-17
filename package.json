@@ -1,0 +1,12 @@
+{
+  "name": "openclaw-docs",
+  "version": "1.0.0",
+  "description": "OpenClaw 中文文档",
+  "scripts": {
+    "start": "mintlify dev",
+    "build": "mintlify build"
+  },
+  "dependencies": {
+    "mintlify": "^4.0.0"
+  }
+}
