@@ -43,19 +43,16 @@ brew install openclaw
 运行设置向导：
 
 \`\`\`bash
-openclaw setup
+openclaw onboard --install-daemon
 \`\`\`
 
 这将引导你完成：
 - 选择认证方式 (API Key, OAuth, 等)
 - 配置模型
 - 设置工作区目录
+- 安装 Gateway 守护进程
 
-或者非交互式安装：
-
-\`\`\`bash
-openclaw setup --non-interactive --mode local
-\`\`\``,
+或者非交互式安装，参考官方文档：https://docs.openclaw.ai/start/getting-started`,
       },
       {
         title: '启动网关',
@@ -64,7 +61,7 @@ openclaw setup --non-interactive --mode local
 启动 WebSocket Gateway：
 
 \`\`\`bash
-openclaw gateway start
+openclaw gateway --port 18789 --verbose
 \`\`\`
 
 检查状态：
@@ -80,13 +77,13 @@ openclaw status
 使用 openclaw message 命令：
 
 \`\`\`bash
-openclaw message send --target 你的手机号 --message "你好，OpenClaw！"
+openclaw message send --to 你的手机号 --message "你好，OpenClaw！"
 \`\`\`
 
 或使用 agent 命令与 AI 对话：
 
 \`\`\`bash
-openclaw agent --message "你好，请介绍一下你自己"
+openclaw agent --message "你好，请介绍一下你自己" --thinking high
 \`\`\``,
       },
     ],
@@ -660,7 +657,7 @@ openclaw plugins install @myorg/openclaw-plugin
 默认模式，网关在本地运行：
 
 \`\`\`bash
-openclaw gateway start --port 18789
+openclaw gateway --port 18789 --verbose
 \`\`\``,
       },
       {
@@ -670,7 +667,7 @@ openclaw gateway start --port 18789
 使用 Tailscale 提供远程访问：
 
 \`\`\`bash
-openclaw gateway start --tailscale serve
+openclaw gateway --tailscale serve
 \`\`\`
 
 选项：
