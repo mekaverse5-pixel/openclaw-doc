@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npx mintlify build",
+  "installCommand": "npm install",
+  "framework": "mintlify",
+  "outputDirectory": "mintlify-output"
+}
