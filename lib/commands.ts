@@ -473,7 +473,7 @@ export const commands: Command[] = [
     ],
     examples: [
       'openclaw browser start',
-      'openclaw browser open https://example.com',
+      'openclaw browser navigate https://example.com',
       'openclaw browser screenshot',
     ],
   },

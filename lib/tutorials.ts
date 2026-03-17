@@ -61,7 +61,7 @@ openclaw onboard --install-daemon
 启动 WebSocket Gateway：
 
 \`\`\`bash
-openclaw gateway --port 18789 --verbose
+openclaw gateway run --port 18789 --verbose
 \`\`\`
 
 检查状态：
@@ -77,7 +77,7 @@ openclaw status
 使用 openclaw message 命令：
 
 \`\`\`bash
-openclaw message send --to 你的手机号 --message "你好，OpenClaw！"
+openclaw message send --target 你的手机号 --message "你好，OpenClaw！"
 \`\`\`
 
 或使用 agent 命令与 AI 对话：
@@ -508,7 +508,7 @@ openclaw browser status
 
 打开网页：
 \`\`\`bash
-openclaw browser open https://www.google.com
+openclaw browser navigate https://www.google.com
 \`\`\`
 
 截图：
@@ -657,7 +657,7 @@ openclaw plugins install @myorg/openclaw-plugin
 默认模式，网关在本地运行：
 
 \`\`\`bash
-openclaw gateway --port 18789 --verbose
+openclaw gateway run --port 18789 --verbose
 \`\`\``,
       },
       {
@@ -667,7 +667,7 @@ openclaw gateway --port 18789 --verbose
 使用 Tailscale 提供远程访问：
 
 \`\`\`bash
-openclaw gateway --tailscale serve
+openclaw gateway run --tailscale serve
 \`\`\`
 
 选项：
