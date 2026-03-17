@@ -2,6 +2,10 @@
   "name": "openclaw-docs",
   "version": "1.0.0",
   "description": "OpenClaw 中文文档",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "start": "mintlify dev",
     "build": "mintlify build"
