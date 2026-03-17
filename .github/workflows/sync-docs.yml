@@ -1,0 +1,40 @@
+name: 同步 OpenClaw 文档
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 0 点自动执行
+  workflow_dispatch:  # 支持手动触发
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          pip install requests beautifulsoup4 markdownify
+
+      - name: 抓取官方文档
+        run: |
+          python scripts/sync_docs.py
+
+      - name: 翻译文档 (可选)
+        if: false  # 暂时禁用，需要配置 API key
+        run: |
+          python scripts/translate.py
+
+      - name: 提交更改
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '自动同步官方文档'
+          file_pattern: 'docs/**/*.md'
