@@ -1,0 +1,46 @@
+{
+  "$schema": "https://mintlify.sh/schema.json",
+  "name": "OpenClaw 中文文档",
+  "logo": {
+    "url": "https://openclaw.ai/logo.png"
+  },
+  "favicon": "/favicon.png",
+  "navigation": [
+    {
+      "group": "快速开始",
+      "pages": ["index", "install", "getting-started"]
+    },
+    {
+      "group": "通道配置",
+      "pages": ["channels"]
+    },
+    {
+      "group": "模型配置",
+      "pages": ["providers"]
+    },
+    {
+      "group": "工具使用",
+      "pages": ["tools", "tools-usage"]
+    },
+    {
+      "group": "API 参考",
+      "pages": ["api"]
+    }
+  ],
+  "anchors": [
+    {
+      "name": "社区",
+      "icon": "message-circle",
+      "url": "https://discord.com/invite/clawd"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/openclaw/openclaw"
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/openclawai",
+    "github": "https://github.com/openclaw/openclaw"
+  }
+}

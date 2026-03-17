@@ -1,41 +1,43 @@
-# Website
+# OpenClaw 中文文档
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+OpenClaw 中文配置指南网站，基于 Mintlify 构建。
 
-## Installation
+## 快速开始
 
-```bash
-yarn
-```
-
-## Local Development
+### 本地开发
 
 ```bash
-yarn start
+# 安装依赖
+npm install
+
+# 启动本地服务器
+npm start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+### 部署到 Vercel
 
-## Build
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project)
 
-```bash
-yarn build
+## 项目结构
+
+```
+openclaw-docs/
+├── docs/                  # 文档目录
+│   ├── getting-started.md
+│   ├── configuration.md
+│   ├── tools.md
+│   └── api.md
+├── mint.json              # Mintlify 配置
+└── README.md
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## 自动同步
 
-## Deployment
+本项目使用 GitHub Actions 自动同步官方文档：
 
-Using SSH:
+- 定时任务：每天 0 点
+- 手动触发：在 Actions 页面点击 "Run workflow"
 
-```bash
-USE_SSH=true yarn deploy
-```
+## 许可证
 
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+MIT License
